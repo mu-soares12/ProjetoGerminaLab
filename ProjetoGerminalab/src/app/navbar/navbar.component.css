@@ -1,0 +1,44 @@
+header {
+    background-color: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .leftnav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .leftnav img {
+    height: 36px;
+  }
+  
+  .rightnav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .rightnav img {
+    width: 20px;
+    height: 20px;
+}
+  
+  .rightnav img:last-child {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+  }
+.avatar {
+    display: flex;
+    align-items: center;
+    border: 1px black solid;
+    border-radius: 60px;
+}
