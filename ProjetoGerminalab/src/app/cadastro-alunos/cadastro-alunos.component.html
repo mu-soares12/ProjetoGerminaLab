@@ -1,0 +1,26 @@
+<div class="container">
+    <h1>Cadastrar Aluno</h1>
+    <div class="banner">
+        <img src="icons/info-nota-pt1.png" alt="banner">
+    </div>
+    
+    <form>
+        <input type="email" placeholder="E-mail" required>
+        <input type="text" placeholder="Nome completo" required>
+        <input type="text" placeholder="Gênero" required>
+        <input type="text" placeholder="Data de nascimento" 
+        onfocus="(this.type='date')" 
+        onblur="(this.type=this.value ? 'date' : 'text')">
+        <input type="text" placeholder="Tipo de alimentação" required>
+        <input type="text" placeholder="Escolaridade País" required>
+    </form>
+
+    <div class="buttons">
+        <button type="button" class="btn-descartar">
+            Descartar
+        </button>
+        <button type="button" class="btn-proximo" (click)="navegarCadastroNotas()">
+            Próximo
+        </button>
+    </div>
+</div>
