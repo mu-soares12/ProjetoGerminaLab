@@ -1,0 +1,23 @@
+<thead>
+    <tr>
+        <th>Nome</th>
+        <th>Média</th>
+        <th>Situação</th>
+    </tr>
+</thead>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Média</th>
+            <th>Situação</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td>{{ student.name }}</td>
+            <td>{{ student.media }}</td>
+            <td>{{ student.media >= 7 ? 'Aprovado' : 'Reprovado' }}</td>
+        </tr>
+    </tbody>
+</table>
