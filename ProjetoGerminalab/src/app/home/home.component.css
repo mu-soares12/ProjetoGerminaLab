@@ -102,3 +102,19 @@ td {
     padding: 8px;
     text-align: left;
 }
+
+.status {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: #e0f2f1;
+    border-radius: 8px;
+    border: 1px solid #b2dfdb;
+    color: black;
+}
+
+.status img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
