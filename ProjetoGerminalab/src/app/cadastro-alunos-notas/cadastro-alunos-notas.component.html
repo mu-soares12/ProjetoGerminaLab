@@ -5,18 +5,17 @@
         <img src="icons/info-nota-pt2.png" alt="banner">
     </div>
     
-    <form>
-        <input type="number" placeholder="Linguagens" required>
-        <input type="number" placeholder="Exatas" required>
-        <input type="number" placeholder="Ciências" required>
+    <form #formRef="ngForm">
+        <input type="number" name="linguagens" [(ngModel)]="linguagens" placeholder="Linguagens" required>
+        <input type="number" name="exatas" [(ngModel)]="exatas" placeholder="Exatas" required>
+        <input type="number" name="ciencias" [(ngModel)]="ciencias" placeholder="Ciências" required>
+        <div class="buttons">
+            <button type="button" class="btn-descartar" (click)="descartar(formRef)">
+                Descartar
+            </button>
+            <button type="button" class="btn-cadastrar" (click)="cadastrarAluno(formRef)"> <img src="icons/cadastro.png" alt="cadastro">
+                Cadastrar Aluno
+            </button>
+        </div>
     </form>
-
-    <div class="buttons">
-        <button type="button" class="btn-descartar">
-            Descartar
-        </button>
-        <button type="button" class="btn-cadastrar"> <img src="icons/cadastro.png" alt="cadastro">
-            Cadastrar Aluno
-        </button>
-    </div>
 </div>
