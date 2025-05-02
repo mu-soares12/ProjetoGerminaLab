@@ -1,0 +1,15 @@
+.conteudo-popup {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    background-color: #333333;
+    padding: 10px;
+}
+.mensagem {
+    color: white;
+    font-family: "Arial", sans-serif;
+    font-size: 14px;
+}
+img {
+    height: 20px;
+}
