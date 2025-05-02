@@ -4,23 +4,25 @@
         <img src="icons/info-nota-pt1.png" alt="banner">
     </div>
     
-    <form>
-        <input type="email" placeholder="E-mail" required>
-        <input type="text" placeholder="Nome completo" required>
-        <input type="text" placeholder="Gênero" required>
-        <input type="text" placeholder="Data de nascimento" 
-        onfocus="(this.type='date')" 
-        onblur="(this.type=this.value ? 'date' : 'text')">
-        <input type="text" placeholder="Tipo de alimentação" required>
-        <input type="text" placeholder="Escolaridade País" required>
+    <form #formRef="ngForm">
+        <input type="email" name="email" [(ngModel)]="email" placeholder="E-mail" required>
+        <input type="text" name="nome" [(ngModel)]="nome" placeholder="Nome completo" required>
+        <input type="text" name="genero" [(ngModel)]="genero" placeholder="Gênero" required>
+        <input type="text" name="nascimento" [(ngModel)]="nascimento"
+            placeholder="Data de nascimento"
+            onfocus="(this.type='date')"
+            onblur="(this.type=this.value ? 'date' : 'text')" required>
+        <input type="text" name="alimentacao" [(ngModel)]="alimentacao" placeholder="Tipo de alimentação" required>
+        <input type="text" name="escolaridade" [(ngModel)]="escolaridade" placeholder="Escolaridade País" required>
+        
+        <div class="buttons">
+            <button type="button" class="btn-descartar" (click)="descartar(formRef)">
+                Descartar
+            </button>
+            <button type="button" class="btn-proximo" (click)="navegarCadastroNotas(formRef)">
+                Próximo
+            </button>
+        </div>
     </form>
 
-    <div class="buttons">
-        <button type="button" class="btn-descartar">
-            Descartar
-        </button>
-        <button type="button" class="btn-proximo" (click)="navegarCadastroNotas()">
-            Próximo
-        </button>
-    </div>
 </div>
