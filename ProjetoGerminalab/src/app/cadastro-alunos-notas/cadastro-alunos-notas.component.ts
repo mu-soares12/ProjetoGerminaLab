@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
-import { PopUpErroLoginComponent } from '../pop-up-erro-login/pop-up-erro-login.component';
-import { PopUpSucessoLoginComponent } from '../pop-up-sucesso-login/pop-up-sucesso-login.component';
+import { PopUpErroCadastroComponent } from '../pop-up-erro-cadastro/pop-up-erro-cadastro.component';
+import { PopUpSucessoCadastroComponent } from '../pop-up-sucesso-cadastro/pop-up-sucesso-cadastro.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -24,7 +24,7 @@ export class CadastroAlunosNotasComponent {
 
   cadastrarAluno(form: NgForm) {
     if (form.invalid) {
-    const dialog = this.dialog.open(PopUpErroLoginComponent, {
+    const dialog = this.dialog.open(PopUpErroCadastroComponent, {
       panelClass: 'popup-erro',
       hasBackdrop: false,
       enterAnimationDuration: '200ms',
@@ -37,7 +37,7 @@ export class CadastroAlunosNotasComponent {
   }
   else {
     if (form.value.linguagens < 0 || form.value.linguagens > 10 || form.value.exatas < 0 || form.value.exatas > 10 || form.value.ciencias < 0 || form.value.ciencias > 10) {
-      const dialog = this.dialog.open(PopUpErroLoginComponent, {
+      const dialog = this.dialog.open(PopUpErroCadastroComponent, {
         panelClass: 'popup-erro',
         hasBackdrop: false,
         enterAnimationDuration: '200ms',
@@ -49,7 +49,7 @@ export class CadastroAlunosNotasComponent {
       setTimeout(() => dialog.close(), 5000);
     }
     else {
-      const dialog = this.dialog.open(PopUpSucessoLoginComponent, {
+      const dialog = this.dialog.open(PopUpSucessoCadastroComponent, {
         panelClass: 'popup-sucesso',
         hasBackdrop: false,
         enterAnimationDuration: '200ms',
