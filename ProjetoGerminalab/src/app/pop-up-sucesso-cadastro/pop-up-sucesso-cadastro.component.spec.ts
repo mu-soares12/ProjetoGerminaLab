@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PopUpSucessoLoginComponent } from './pop-up-sucesso-login.component';
+import { PopUpSucessoCadastroComponent } from './pop-up-sucesso-cadastro.component';
 
 describe('PopUpSucessoLoginComponent', () => {
-  let component: PopUpSucessoLoginComponent;
-  let fixture: ComponentFixture<PopUpSucessoLoginComponent>;
+  let component: PopUpSucessoCadastroComponent;
+  let fixture: ComponentFixture<PopUpSucessoCadastroComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PopUpSucessoLoginComponent]
+      imports: [PopUpSucessoCadastroComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PopUpSucessoLoginComponent);
+    fixture = TestBed.createComponent(PopUpSucessoCadastroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

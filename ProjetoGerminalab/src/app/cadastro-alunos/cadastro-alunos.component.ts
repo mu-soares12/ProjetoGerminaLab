@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm, FormsModule } from '@angular/forms';
-import { PopUpErroLoginComponent } from '../pop-up-erro-login/pop-up-erro-login.component';
+import { PopUpErroCadastroComponent } from '../pop-up-erro-cadastro/pop-up-erro-cadastro.component';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -18,13 +18,13 @@ export class CadastroAlunosComponent {
   escolaridade!: string;
 
   constructor(private dialog: MatDialog) {}
-  
+
   navegarCadastroNotas(form: NgForm) {
     if (form.valid) {
     window.location.href = '/cadastro-aluno-notas';
     }
     else {
-      const dialog = this.dialog.open(PopUpErroLoginComponent, {
+      const dialog = this.dialog.open(PopUpErroCadastroComponent, {
         panelClass: 'popup-erro',
         hasBackdrop: false,
         enterAnimationDuration: '200ms',
