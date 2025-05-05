@@ -1,23 +1,50 @@
-<thead>
-    <tr>
-        <th>Nome</th>
-        <th>Média</th>
-        <th>Situação</th>
-    </tr>
-</thead>
-<table>
-    <thead>
-        <tr>
-            <th>Nome</th>
-            <th>Média</th>
-            <th>Situação</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let student of students">
-            <td>{{ student.name }}</td>
-            <td>{{ student.media }}</td>
-            <td>{{ student.media >= 7 ? 'Aprovado' : 'Reprovado' }}</td>
-        </tr>
-    </tbody>
-</table>
+<div>
+    <h2>Lista de Alunos</h2>
+
+    <!-- Seleção de itens por página -->
+    <label for="itemsPerPage">Itens por página:</label>
+    <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="updatePagination()">
+        <option *ngFor="let option of itemsPerPageOptions" [value]="option">{{ option }}</option>
+    </select>
+
+    <!-- Tabela -->
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ano</th>
+                <th>Série</th>
+                <th>Exatas</th>
+                <th>Linguagens</th>
+                <th>Ciências</th>
+                <th>Média</th>
+                <th>Situação</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aluno of paginatedData">
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.email }}</td>
+                <td>{{ aluno.ano }}</td>
+                <td>{{ aluno.serie }}</td>
+                <td>{{ aluno.exatas }}</td>
+                <td>{{ aluno.linguagens }}</td>
+                <td>{{ aluno.ciencias }}</td>
+                <td>{{ aluno.media }}</td>
+                <td>{{ aluno.situacao }}</td>
+                <td>
+                    <button (click)="acao(aluno)">Ação</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Paginação -->
+    <div style="margin-top: 1em;">
+        <button (click)="prevPage()" [disabled]="currentPage === 1">Anterior</button>
+        <span>Página {{ currentPage }}</span>
+        <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= data.length">Próxima</button>
+    </div>
+</div>
