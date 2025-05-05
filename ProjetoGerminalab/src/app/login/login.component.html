@@ -8,15 +8,15 @@
             <h1>Laboratório de Germinares</h1>
             <p>Realize o login! Caso seja seu primeiro acesso, faça o cadastro.</p>
 
-            <form class="login-form">
-                <input type="email" placeholder="E-mail">
-                <input type="password" placeholder="Senha">
+            <form #formRef="ngForm" class="login-form">
+                <input type="email" name="email" [(ngModel)]="email" placeholder="E-mail" required>
+                <input type="password" name="senha" [(ngModel)]="senha" placeholder="Senha" required>
 
                 <div class="buttons">
                     <button type="button" class="btn-register" (click)="navegarCadastro()"><img src="icons/cadastro.png"
                             alt="cadastro">Cadastrar
                      </button>
-                    <button type="button" class="btn-login"><img src="icons/login.png" alt="login">
+                    <button type="button" class="btn-login" (click)="logar(formRef)"><img src="icons/login.png" alt="login">
                         Fazer login
                     </button>
                 </div>
