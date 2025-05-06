@@ -40,13 +40,19 @@
     flex-direction: row;
 }
 
-.nome-buscar input {
+.search-container input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #F5F5F5;
+}
+
+.search-container input {
+    background: url("icons/search.png") no-repeat left center;
+    background-size: 20px 20px;
+    padding-left: 30px;
 }
 
 .buttons {
@@ -117,4 +123,52 @@ td {
     width: 20px;
     height: 20px;
     margin-right: 8px;
+}
+
+.paginacao {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 20px;
+}
+
+.paginacao label {
+    margin-top: 1.5em;
+}
+
+.paginacao select {
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-top: 1em;
+}
+
+.paginas {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-left: 1em;
+}
+
+.paginas button {
+    background-color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+.paginas button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.paginas span {
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: #e0f7f1;
+    color: #000;
+    font-weight: bold;
 }
