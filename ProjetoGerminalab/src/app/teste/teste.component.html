@@ -1,14 +1,12 @@
 <div>
     <h2>Lista de Alunos</h2>
 
-    <!-- Seleção de itens por página -->
     <label for="itemsPerPage">Itens por página:</label>
     <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="updatePagination()">
         <option *ngFor="let option of itemsPerPageOptions" [value]="option">{{ option }}</option>
     </select>
 
-    <!-- Tabela -->
-    <table border="1" cellpadding="8" cellspacing="0">
+    <table cellpadding="8" cellspacing="0">
         <thead>
             <tr>
                 <th>Nome</th>

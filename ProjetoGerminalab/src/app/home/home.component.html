@@ -7,10 +7,10 @@
 
         <div class="content">
             <h1>Gerenciamento de notas</h1>
-
             <form class="nome-buscar">
-                <input type="text" placeholder="Buscar por nome">
-
+                <div class="search-container">
+                    <input type="text" placeholder="Buscar por nome">
+                </div>
                 <div class="buttons">
                     <button type="button" class="btn-pesquisa">
                         Pesquisar
@@ -36,64 +36,38 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>João Vitor</td>
-                        <td>joao.vitorgerminare.com</td>
-                        <td>2</td>
-                        <td>H</td>
-                        <td>8</td>
-                        <td>7</td>
-                        <td>9</td>
-                        <td>8</td>
+                    <tr *ngFor="let aluno of paginatedData">
+                        <td>{{ aluno.nome }}</td>
+                        <td>{{ aluno.email }}</td>
+                        <td>{{ aluno.ano }}</td>
+                        <td>{{ aluno.serie }}</td>
+                        <td>{{ aluno.exatas }}</td>
+                        <td>{{ aluno.linguagens }}</td>
+                        <td>{{ aluno.ciencias }}</td>
+                        <td>{{ aluno.media }}</td>
                         <td>
-                            <div class="status"><img src="icons/certo.png" alt="certo">Aprovado</div>
+                            <div class="status"><img src="icons/certo.png" alt="certo">{{ aluno.situacao }}</div>
                         </td>
-                        <td>:</td>
-                    </tr>
-                    <tr>
-                        <td>João Vitor</td>
-                        <td>joao.vitorgerminare.com</td>
-                        <td>2</td>
-                        <td>H</td>
-                        <td>8</td>
-                        <td>7</td>
-                        <td>9</td>
-                        <td>8</td>
-                        <td>
-                            <div class="status"><img src="icons/certo.png" alt="certo">Aprovado</div>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>João Vitor</td>
-                        <td>joao.vitorgerminare.com</td>
-                        <td>2</td>
-                        <td>H</td>
-                        <td>8</td>
-                        <td>7</td>
-                        <td>9</td>
-                        <td>8</td>
-                        <td>
-                            <div class="status"><img src="icons/certo.png" alt="certo">Aprovado</div>
-                        </td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>João Vitor</td>
-                        <td>joao.vitorgerminare.com</td>
-                        <td>2</td>
-                        <td>H</td>
-                        <td>8</td>
-                        <td>7</td>
-                        <td>9</td>
-                        <td>8</td>
-                        <td>
-                            <div class="status"><img src="icons/certo.png" alt="certo">Aprovado</div>
-                        </td>
-                        <td></td>
+                        <td>{{ aluno.acao }}</td>
                     </tr>
                 </tbody>
             </table>
+            <div class="paginacao">
+                <label for="itemsPerPage">Itens por página:</label>
+                <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (change)="updatePagination()">
+                    <option *ngFor="let option of itemsPerPageOptions" [value]="option">{{ option }}</option>
+                </select>
+
+                <div class="paginas" style="margin-top: 1em;">
+                    <button (click)="prevPage()" [disabled]="currentPage === 1"><img src="icons/esquerda.png"
+                            alt="esquerda">
+                    </button>
+                    <span>{{ currentPage }}</span>
+                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= data.length"><img
+                            src="icons/direita.png" alt="direita">
+                    </button>
+                </div>
+            </div>
         </div>
     </main>
 </div>
