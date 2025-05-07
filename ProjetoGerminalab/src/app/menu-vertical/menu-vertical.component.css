@@ -8,6 +8,7 @@
     box-shadow: 2px 0 4px rgba(0,0,0,0.1);
     height: 500px;
     position: fixed;
+    top: 65px;
 }
   
 .topSidebar {

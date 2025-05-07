@@ -10,13 +10,14 @@
     grid-template-areas:
         "header header"
         "sidebar main-content";
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 100px 1fr;
     grid-template-rows: auto 1fr;
 }
 
 .main-content {
     grid-area: main-content;
     padding: 20px;
+    margin-top: 70px;
 }
 
 .meio {
@@ -58,7 +59,7 @@
     cursor: pointer;
     border: none;
     color: #fff;
-    background-color: green;
+    background-color: #238662;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -69,7 +70,7 @@
     border-radius: 5px;
     cursor: pointer;
     border: none;
-    color: green;
+    color: #136C4C;
     background-color: white;
     display: flex;
     align-items: center;

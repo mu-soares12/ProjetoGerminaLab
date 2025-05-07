@@ -7,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrl: './laboratorio-germinare.component.css'
 })
 export class LaboratorioGerminareComponent {
+  redirecionarLogin() {
+    window.location.href = '/login';
+  }
 
+  redirecionarGraficos() {
+    window.location.href = '/graficos';
+  }
 }

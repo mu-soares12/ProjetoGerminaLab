@@ -1,21 +1,22 @@
 <div class="container">
-    <h1>Cadastrar Aluno</h1>
-
-    <div class="banner">
-        <img src="icons/info-nota-pt2.png" alt="banner">
-    </div>
-    
-    <form #formRef="ngForm">
-        <input type="number" name="linguagens" [(ngModel)]="linguagens" placeholder="Linguagens" required>
-        <input type="number" name="exatas" [(ngModel)]="exatas" placeholder="Exatas" required>
-        <input type="number" name="ciencias" [(ngModel)]="ciencias" placeholder="Ciências" required>
-        <div class="buttons">
-            <button type="button" class="btn-descartar" (click)="descartar(formRef)">
-                Descartar
-            </button>
-            <button type="button" class="btn-cadastrar" (click)="cadastrarAluno(formRef)"> <img src="icons/cadastro.png" alt="cadastro">
-                Cadastrar Aluno
-            </button>
+    <main class="main-content">
+        <h1>Cadastrar Aluno</h1>
+        <div class="banner">
+            <img src="icons/info-nota-pt2.png" alt="banner">
         </div>
-    </form>
+        
+        <form #formRef="ngForm">
+            <input type="number" name="linguagens" [(ngModel)]="linguagens" placeholder="Linguagens" required>
+            <input type="number" name="exatas" [(ngModel)]="exatas" placeholder="Exatas" required>
+            <input type="number" name="ciencias" [(ngModel)]="ciencias" placeholder="Ciências" required>
+            <div class="buttons">
+                <button type="button" class="btn-descartar" (click)="descartar(formRef)">
+                    Descartar
+                </button>
+                <button type="button" class="btn-cadastrar" (click)="cadastrarAluno(formRef)"> <img src="icons/cadastro.png" alt="cadastro">
+                    Cadastrar Aluno
+                </button>
+            </div>
+        </form>
+    </main>
 </div>

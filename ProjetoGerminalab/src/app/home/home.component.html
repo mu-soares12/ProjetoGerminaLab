@@ -9,13 +9,15 @@
             <h1>Gerenciamento de notas</h1>
             <form class="nome-buscar">
                 <div class="search-container">
-                    <input type="text" placeholder="Buscar por nome">
+                    <span><img matPrefix src="icons/search.png" alt="search"></span>
+                    <input matInput placeholder="Buscar por nome">
                 </div>
+                  
                 <div class="buttons">
                     <button type="button" class="btn-pesquisa">
                         Pesquisar
                     </button>
-                    <button type="button" class="btn-register"><img src="icons/cadastro.png" alt="cadastro">
+                    <button type="button" class="btn-register" (click)="redirecionarCadastroAluno()"><img src="icons/cadastro.png" alt="cadastro">
                         Cadastrar aluno
                     </button>
                 </div>
@@ -48,7 +50,7 @@
                         <td>
                             <div class="status"><img src="icons/certo.png" alt="certo">{{ aluno.situacao }}</div>
                         </td>
-                        <td>{{ aluno.acao }}</td>
+                        <td (click)="editarRemover()"><img [src]="aluno.acao" alt="menu"></td>
                     </tr>
                 </tbody>
             </table>

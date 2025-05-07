@@ -3,9 +3,21 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 .container {
-    margin-left: 150px;
-    margin-top: 40px;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "sidebar main-content";
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+.main-content {
+    margin-top: 70px;
+    grid-area: main-content;
+    padding: 20px;
+    width: 1200px;
 }
 
 .banner {

@@ -10,11 +10,12 @@
     grid-template-areas:
         "header header"
         "sidebar main-content";
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 100px 1fr;
     grid-template-rows: auto 1fr;
 }
 
 .main-content {
+    margin-top: 70px;
     grid-area: main-content;
     padding: 20px;
 }

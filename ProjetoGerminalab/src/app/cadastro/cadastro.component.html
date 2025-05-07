@@ -1,21 +1,25 @@
 <div class="container">
-    <h1>Cadastro</h1>
-    <p>Preencha os campos a seguir</p>
-    
-    <form>
-        <input type="email" placeholder="E-mail" required>
-        <input type="password" placeholder="Senha" required>
-        <input type="text" placeholder="Nome completo" required>
-        <input type="text" placeholder="Gênero" required>
-        <input type="text" placeholder="Data de nascimento" 
-        onfocus="(this.type='date')" 
-        onblur="(this.type=this.value ? 'date' : 'text')">
-         <input type="text" placeholder="Tipo de alimentação" required>
-    </form>
+    <main class="main-content">
 
-    <div class="button-container">
-        <button type="submit">
-            <img src="icons/cadastro.png" alt="cadastro"> Cadastrar
-        </button>
-    </div>
+        <h1>Cadastro</h1>
+        <p>Preencha os campos a seguir</p>
+        
+        <form #formRef="ngForm">
+            <input type="email" name="email" placeholder="E-mail" [(ngModel)]="email" required>
+            <input type="password" name="senha" placeholder="Senha" [(ngModel)]="senha" required>
+            <input type="text" name="nome" placeholder="Nome completo" [(ngModel)]="nome" required>
+            <input type="text" name="genero" placeholder="Gênero" [(ngModel)]="genero" required>
+            <input type="text" name="nascimento" placeholder="Data de nascimento" 
+            onfocus="(this.type='date')" 
+            onblur="(this.type=this.value ? 'date' : 'text')" [(ngModel)]="nascimento">
+            <input type="text" name="alimentacao" placeholder="Tipo de alimentação" [(ngModel)]="alimentacao" required>
+
+            <div class="button-container">
+                <button type="submit" (click)="cadastrar(formRef)">
+                    <img src="icons/cadastro.png" alt="cadastro"> Cadastrar
+                </button>
+            </div>
+        </form>
+    
+    </main>
 </div>

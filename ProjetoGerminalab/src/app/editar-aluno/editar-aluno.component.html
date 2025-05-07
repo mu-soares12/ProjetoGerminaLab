@@ -1,0 +1,35 @@
+<div class="overlay">
+    <div class="titulo">
+        <h3>Editar</h3>
+        <img src="icons/fechar.png" alt="fechar">
+    </div>
+    
+    <form #formRef="ngForm" class="form-editar-aluno">
+        <div class="parte1">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" [(ngModel)]="aluno.nome" required>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" [(ngModel)]="aluno.email" required>
+        </div>
+    
+        <div class="parte2">
+            <label for="ano">Ano</label>
+            <input type="number" id="ano" name="ano" [(ngModel)]="aluno.ano" required>
+            <label for="serie">Serie</label>
+            <input type="text" id="serie" name="serie" [(ngModel)]="aluno.serie" required>
+        </div>
+    
+        <div class="parte3">
+            <label for="exatas">Exatas</label>
+            <input type="number" id="exatas" name="exatas" [(ngModel)]="aluno.exatas" required>
+            <label for="linguagens">Linguagens</label>
+            <input type="number" id="linguagens" name="linguagens" [(ngModel)]="aluno.linguagens" required>
+            <label for="ciencias">Ciencias</label>
+            <input type="number" id="ciencias" name="ciencias" [(ngModel)]="aluno.ciencias" required>
+        </div>
+        <div class="buttons">
+            <button type="button" class="btn-descartar" (click)="descartar()">Descartar</button>
+            <button type="submit" class="btn-confirmar" [disabled]="formRef.invalid" (click)="editarAluno(formRef)">Confirmar</button>
+        </div>
+    </form>
+</div>
