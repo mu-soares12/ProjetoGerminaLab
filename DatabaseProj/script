@@ -1,0 +1,22 @@
+CREATE TABLE alunos (
+    nome VARCHAR(50),
+    email VARCHAR(50),
+    ano INT,
+    serie CHAR,
+    sobrenome VARCHAR(50),
+    genero VARCHAR(20),
+    data_nascimento DATE,
+    escolaridade_pais VARCHAR(50),
+    tipo_alimentacao VARCHAR(20),
+    nota_exatas REAL,
+    nota_linguagens REAL,
+    nota_ciencias REAL,
+    media_geral REAL,
+    rank_geral INT,
+    desempenho VARCHAR(20),
+    status_exatas VARCHAR(20),
+    status_linguagens VARCHAR(20),
+    status_ciencias VARCHAR(20),
+    status_final VARCHAR(20),
+    data_prova DATE
+);
