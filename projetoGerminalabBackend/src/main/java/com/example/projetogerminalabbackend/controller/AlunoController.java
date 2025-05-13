@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/home")
@@ -16,6 +17,11 @@ public class AlunoController {
 
     @PostMapping
     public Aluno create(@RequestBody Aluno aluno) {
+        Optional<Aluno> alunoR = alunoRepository.findById(aluno.getNomecompleto());
+        if(alunoR.isPresent()){
+            return null;
+        }
+
         return alunoRepository.save(aluno);
     }
 
@@ -24,23 +30,32 @@ public class AlunoController {
         return alunoRepository.findAll();
     }
 
-    @GetMapping("/{nome}")
-    public Aluno getById(@PathVariable String nome) {
-        return alunoRepository.findById(nome)
-                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+    @GetMapping("/")
+    public Aluno getById(@RequestParam String nomecompleto) {
+        return alunoRepository.findById(nomecompleto)
+                .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
     }
 
-    @PutMapping("/{nome}")
-    public Aluno update(@PathVariable String nome, @RequestBody Aluno alunoEditado) {
-        Aluno aluno = getById(nome);
+    @PutMapping("/{nomecompleto}")
+    public Aluno update(@PathVariable String nomecompleto, @RequestBody Aluno alunoEditado) {
+        Aluno aluno = getById(nomecompleto);
 
-        BeanUtils.copyProperties(alunoEditado, aluno);
+        aluno.setEmail(alunoEditado.getEmail());
+        aluno.setAno(alunoEditado.getAno());
+        aluno.setSerie(alunoEditado.getSerie());
+        aluno.setGenero(alunoEditado.getGenero());
+        aluno.setDataNascimento(alunoEditado.getDataNascimento());
+        aluno.setEscolaridadePais(alunoEditado.getEscolaridadePais());
+        aluno.setTipoAlimentacao(alunoEditado.getTipoAlimentacao());
+        aluno.setNotaExatas(alunoEditado.getNotaExatas());
+        aluno.setNotaLinguagens(alunoEditado.getNotaLinguagens());
+        aluno.setNotaCiencias(alunoEditado.getNotaCiencias());
 
         return alunoRepository.save(aluno);
     }
 
-    @DeleteMapping("/{nome}")
-    public void delete(@PathVariable String nome) {
-        alunoRepository.deleteById(nome);
+    @DeleteMapping("/{nomecompleto}")
+    public void delete(@PathVariable String nomecompleto) {
+        alunoRepository.deleteById(nomecompleto);
     }
 }

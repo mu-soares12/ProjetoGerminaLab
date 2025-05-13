@@ -17,8 +17,8 @@ import java.sql.Date;
 @NoArgsConstructor
 @Table(name = "alunos")
 public class Aluno {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private String nomecompleto;
 
     private String email;
@@ -52,4 +52,5 @@ public class Aluno {
     private String statusFinal;
     @Column(name = "data_prova")
     private Date dataProva;
+    private int cdid;
 }
