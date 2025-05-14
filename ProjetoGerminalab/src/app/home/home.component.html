@@ -12,12 +12,13 @@
                     <span><img matPrefix src="icons/search.png" alt="search"></span>
                     <input matInput placeholder="Buscar por nome">
                 </div>
-                  
+
                 <div class="buttons">
                     <button type="button" class="btn-pesquisa">
                         Pesquisar
                     </button>
-                    <button type="button" class="btn-register" (click)="redirecionarCadastroAluno()"><img src="icons/cadastro.png" alt="cadastro">
+                    <button type="button" class="btn-register" (click)="redirecionarCadastroAluno()"><img
+                            src="icons/cadastro.png" alt="cadastro">
                         Cadastrar aluno
                     </button>
                 </div>
@@ -39,16 +40,16 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let aluno of paginatedData">
-                        <td>{{ aluno.nome }}</td>
+                        <td>{{ aluno.nomeCompleto }}</td>
                         <td>{{ aluno.email }}</td>
                         <td>{{ aluno.ano }}</td>
                         <td>{{ aluno.serie }}</td>
-                        <td>{{ aluno.exatas }}</td>
-                        <td>{{ aluno.linguagens }}</td>
-                        <td>{{ aluno.ciencias }}</td>
-                        <td>{{ aluno.media }}</td>
+                        <td>{{ aluno.notaExatas }}</td>
+                        <td>{{ aluno.notaLinguagens }}</td>
+                        <td>{{ aluno.notaCiencias }}</td>
+                        <td>{{ aluno.mediaGeral }}</td>
                         <td>
-                            <div class="status"><img src="icons/certo.png" alt="certo">{{ aluno.situacao }}</div>
+                            <div class="status"><img src="icons/certo.png" alt="certo">{{ aluno.statusFinal }}</div>
                         </td>
                         <td (click)="editarRemover()"><img [src]="aluno.acao" alt="menu"></td>
                     </tr>
@@ -65,7 +66,7 @@
                             alt="esquerda">
                     </button>
                     <span>{{ currentPage }}</span>
-                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= data.length"><img
+                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= alunos.length"><img
                             src="icons/direita.png" alt="direita">
                     </button>
                 </div>

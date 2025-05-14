@@ -30,7 +30,7 @@ public class bffController {
         for (Aluno aluno : alunos) {
             media = (aluno.getNotaExatas() + aluno.getNotaLinguagens() + aluno.getNotaCiencias()) / 3;
             aluno.setMediaGeral(media);
-            if (aluno.getMediaGeral() >= 7){
+            if (aluno.getMediaGeral() >= 70){
                 aluno.setStatusFinal("Aprovado");
             }
             else {aluno.setStatusFinal("Reprovado");}
