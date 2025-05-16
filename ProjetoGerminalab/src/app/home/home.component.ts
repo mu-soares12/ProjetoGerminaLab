@@ -6,6 +6,7 @@ import { EditarRemoverAlunoComponent } from '../editar-remover-aluno/editar-remo
 import { EditarAlunoComponent } from '../editar-aluno/editar-aluno.component';
 import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AlunoService, Aluno } from '../services/aluno.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,29 +20,33 @@ import { NgForm } from '@angular/forms';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  data = [
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" },
-    { nome: "Willamy Andreotti", email: "willamy.andreotti@germinare.org.br", ano: 3, serie: "E", exatas: 8, linguagens: 6, ciencias: 3, media: 10, situacao: "Aprovado", acao: "icons/menu.png" }
-  ];
+  data!: Aluno[];
+  paginatedData: Aluno[] = [];
+
+  constructor(private dialog: MatDialog, private alunoService: AlunoService) {}
+
   currentPage = 1;
   itemsPerPage = 5;
   itemsPerPageOptions = [5, 10, 15];
-  paginatedData: any[] = [];
+  // paginatedData: any[] = [];
 
   redirecionarCadastroAluno() {
     window.location.href = '/cadastro-aluno';
   }
 
   ngOnInit() {
-    this.updatePagination();
+    this.listar();
+  }
+
+  listar() {
+    this.alunoService.listarAlunos().subscribe({
+      next: (res) => {
+        this.data = res;
+      },
+      error: (err) => {
+        console.error('Erro ao listar alunos:', err);
+      }
+    });
   }
 
   updatePagination() {
@@ -64,9 +69,6 @@ export class HomeComponent {
       this.currentPage--;
       this.updatePagination();
     }
-  }
-
-  constructor(private dialog: MatDialog) {
   }
 
   editarRemover() {
