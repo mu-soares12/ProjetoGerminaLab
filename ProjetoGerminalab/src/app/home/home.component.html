@@ -12,12 +12,13 @@
                     <span><img matPrefix src="icons/search.png" alt="search"></span>
                     <input matInput placeholder="Buscar por nome">
                 </div>
-                  
+
                 <div class="buttons">
                     <button type="button" class="btn-pesquisa">
                         Pesquisar
                     </button>
-                    <button type="button" class="btn-register" (click)="redirecionarCadastroAluno()"><img src="icons/cadastro.png" alt="cadastro">
+                    <button type="button" class="btn-register" (click)="redirecionarCadastroAluno()"><img
+                            src="icons/cadastro.png" alt="cadastro">
                         Cadastrar aluno
                     </button>
                 </div>
@@ -38,6 +39,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     <tr *ngFor="let aluno of data">
                         <td>{{ aluno.nomecompleto }}</td>
                         <td>{{ aluno.email }}</td>
@@ -70,7 +72,7 @@
                             alt="esquerda">
                     </button>
                     <span>{{ currentPage }}</span>
-                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= data.length"><img
+                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= alunos.length"><img
                             src="icons/direita.png" alt="direita">
                     </button>
                 </div>
