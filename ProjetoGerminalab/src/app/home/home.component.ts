@@ -8,7 +8,6 @@ import { Injectable } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AlunoService, Aluno } from '../services/aluno.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -21,26 +20,33 @@ import { AlunoService, Aluno } from '../services/aluno.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  alunos: Aluno[] = [];
+  data!: Aluno[];
+  paginatedData: Aluno[] = [];
 
-  constructor(private alunoService: AlunoService, private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private alunoService: AlunoService) {}
 
-  tableOnInit(): void {
-    this.alunoService.listarAlunos().subscribe(data => {
-      this.alunos = data;
-    });
-  }
   currentPage = 1;
   itemsPerPage = 5;
   itemsPerPageOptions = [5, 10, 15];
-  paginatedData: any[] = [];
+  // paginatedData: any[] = [];
 
   redirecionarCadastroAluno() {
     window.location.href = '/cadastro-aluno';
   }
 
   ngOnInit() {
-    this.updatePagination();
+    this.listar();
+  }
+
+  listar() {
+    this.alunoService.listarAlunos().subscribe({
+      next: (res) => {
+        this.data = res;
+      },
+      error: (err) => {
+        console.error('Erro ao listar alunos:', err);
+      }
+    });
   }
 
   updatePagination() {
@@ -64,7 +70,6 @@ export class HomeComponent {
       this.updatePagination();
     }
   }
-
 
   editarRemover() {
     this.dialog.open(EditarRemoverAlunoComponent, {

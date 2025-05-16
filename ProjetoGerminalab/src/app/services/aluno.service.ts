@@ -18,11 +18,11 @@ export interface Aluno {
   providedIn: 'root'
 })
 export class AlunoService {
-  private apiUrl = 'http://localhost:8080/api/tabela';
+  private endpointGetAll = 'http://localhost:8080/api/alunos';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   listarAlunos(): Observable<Aluno[]> {
-    return this.http.get<Aluno[]>(this.apiUrl);
+    return this.http.get<Aluno[]>(this.endpointGetAll);
   }
 }

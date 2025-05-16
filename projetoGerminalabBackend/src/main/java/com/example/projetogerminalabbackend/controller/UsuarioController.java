@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/login")
+@CrossOrigin("localhost:4200")
 public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
