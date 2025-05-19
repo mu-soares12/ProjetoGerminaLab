@@ -41,7 +41,7 @@
                 <tbody>
 
                     <tr *ngFor="let aluno of data">
-                        <td>{{ aluno.nomecompleto }}</td>
+                        <td>{{ aluno.nomeCompleto }}</td>
                         <td>{{ aluno.email }}</td>
                         <td>{{ aluno.ano }}</td>
                         <td>{{ aluno.serie }}</td>
@@ -72,7 +72,7 @@
                             alt="esquerda">
                     </button>
                     <span>{{ currentPage }}</span>
-                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= alunos.length"><img
+                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= data.length"><img
                             src="icons/direita.png" alt="direita">
                     </button>
                 </div>
