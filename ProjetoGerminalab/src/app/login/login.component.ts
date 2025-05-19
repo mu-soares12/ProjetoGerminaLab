@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ErroLoginComponent } from '../erro-login/erro-login.component';
 import { FormsModule } from '@angular/forms';
 import { Injectable } from '@angular/core';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-login',
@@ -28,11 +29,31 @@ export class LoginComponent {
     window.location.href = '/cadastro';
   }
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private usuarioService: UsuarioService) {}
 
   logar(form: NgForm) {
     if (form.valid) {
-    window.location.href = '/home';
+      this.usuarioService.loginUsuario({
+        email: form.value.email,
+        senha: form.value.senha,
+        nomecompleto: '',
+        genero: '',
+        datanascimento: (new Date()), 
+        tipoalimentacao: '' 
+      }).subscribe({
+        next: (res) => {
+          console.log('Usuário logado com sucesso:', res);
+          window.location.href = '/home';
+        },
+        error: (err) => {
+          console.error('Erro ao logar usuário:', err);
+          this.dialog.open(ErroLoginComponent, {
+            panelClass: 'popup-erro',
+            enterAnimationDuration: '200ms',
+            exitAnimationDuration: '200ms',
+          });
+        }
+      });
     }
     else {
       this.dialog.open(ErroLoginComponent, {
