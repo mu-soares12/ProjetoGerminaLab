@@ -52,13 +52,13 @@ export class HomeComponent {
   updatePagination() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedData = this.alunos.slice(startIndex, endIndex);
+    this.paginatedData = this.data.slice(startIndex, endIndex);
     console.log('Dados da página atual:', this.paginatedData);
 
   }
 
   nextPage() {
-    if (this.currentPage * this.itemsPerPage < this.alunos.length) {
+    if (this.currentPage * this.itemsPerPage < this.data.length) {
       this.currentPage++;
       this.updatePagination();
     }
