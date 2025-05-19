@@ -53,8 +53,13 @@ export class HomeComponent {
     });
   }
 
+
+ 
+
+
   ngOnInit() {
     this.listar();
+
   }
 
 
