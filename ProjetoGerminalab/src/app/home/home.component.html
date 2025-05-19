@@ -40,8 +40,11 @@
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let aluno of data">
-                        <td>{{ aluno.nomeCompleto }}</td>
+
+
+                    <tr *ngFor="let aluno of paginatedData">
+                        <td>{{ aluno.nomecompleto }}</td>
+
                         <td>{{ aluno.email }}</td>
                         <td>{{ aluno.ano }}</td>
                         <td>{{ aluno.serie }}</td>
@@ -50,11 +53,13 @@
                         <td>{{ aluno.notaCiencias}}</td>
                         <td>{{ aluno.mediaGeral }}</td>
                         <td>
-                            <div class="status">
-                                <img 
-                                    [src]="aluno.statusFinal === 'Aprovado' ? 'icons/certo.png' : 'icons/erro.png'" 
-                                    [alt]="aluno.statusFinal === 'Reprovado' ? 'certo' : 'errado'">
-                                    {{ aluno.statusFinal }}
+                            <div class="status" [ngClass]="{
+                                'aprovado': aluno.statusFinal === 'Aprovado',
+                                'reprovado': aluno.statusFinal === 'Reprovado'
+                                }">
+                                <img [src]="aluno.statusFinal === 'Aprovado' ? 'icons/certo.png' : 'icons/erro.png'"
+                                    [alt]="aluno.statusFinal === 'Aprovado' ? 'certo' : 'errado'">
+                                {{ aluno.statusFinal }}
                             </div>
                         </td>
                         <td (click)="editarRemover()"><img src="icons/menu.png" alt="menu"></td>

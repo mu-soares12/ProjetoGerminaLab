@@ -113,10 +113,17 @@ td {
     display: flex;
     align-items: center;
     padding: 5px 10px;
-    background-color: #e0f2f1;
     border-radius: 8px;
     border: 1px solid #b2dfdb;
     color: black;
+}
+
+.status.aprovado {
+    background-color: #e0f2f1;
+}
+
+.status.reprovado {
+    background-color: #ff000080;
 }
 
 .status img {
