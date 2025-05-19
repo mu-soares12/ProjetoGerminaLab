@@ -3,19 +3,21 @@ package com.example.projetogerminalabbackend.controller;
 import com.example.projetogerminalabbackend.model.Usuario;
 import com.example.projetogerminalabbackend.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/login")
-@CrossOrigin("localhost:4200")
+@RequestMapping("/api/usuarios")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public Usuario create(@RequestBody Usuario usuario) {
         Optional<Usuario> usuario1 = usuarioRepository.findById(usuario.getCduser());
         if(usuario1.isPresent()){
@@ -30,11 +32,11 @@ public class UsuarioController {
         return usuarioRepository.findAll();
     }
 
-    @GetMapping("/")
-    public Usuario findById(@RequestParam Integer cdUser) {
-        if(usuarioRepository.findById(cdUser).isPresent()){
-            return usuarioRepository.findById(cdUser).get();
+    @GetMapping("/login")
+    public ResponseEntity<Usuario> findById(@RequestParam String email, @RequestParam String senha) {
+        if(usuarioRepository.findByEmailAndSenha(email, senha).isPresent()){
+            return ResponseEntity.ok(usuarioRepository.findByEmailAndSenha(email, senha).get());
         }
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
 }
