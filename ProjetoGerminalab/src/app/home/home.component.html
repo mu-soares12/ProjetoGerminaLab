@@ -40,7 +40,7 @@
                 </thead>
                 <tbody>
 
-                    <tr *ngFor="let aluno of data">
+                    <tr *ngFor="let aluno of paginatedData">
                         <td>{{ aluno.nomecompleto }}</td>
                         <td>{{ aluno.email }}</td>
                         <td>{{ aluno.ano }}</td>
@@ -50,11 +50,13 @@
                         <td>{{ aluno.notaCiencias}}</td>
                         <td>{{ aluno.mediaGeral }}</td>
                         <td>
-                            <div class="status">
-                                <img 
-                                    [src]="aluno.statusFinal === 'Aprovado' ? 'icons/certo.png' : 'icons/erro.png'" 
-                                    [alt]="aluno.statusFinal === 'Reprovado' ? 'certo' : 'errado'">
-                                    {{ aluno.statusFinal }}
+                            <div class="status" [ngClass]="{
+                                'aprovado': aluno.statusFinal === 'Aprovado',
+                                'reprovado': aluno.statusFinal === 'Reprovado'
+                                }">
+                                <img [src]="aluno.statusFinal === 'Aprovado' ? 'icons/certo.png' : 'icons/erro.png'"
+                                    [alt]="aluno.statusFinal === 'Aprovado' ? 'certo' : 'errado'">
+                                {{ aluno.statusFinal }}
                             </div>
                         </td>
                         <td (click)="editarRemover()"><img src="icons/menu.png" alt="menu"></td>
@@ -72,7 +74,7 @@
                             alt="esquerda">
                     </button>
                     <span>{{ currentPage }}</span>
-                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= alunos.length"><img
+                    <button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= data.length"><img
                             src="icons/direita.png" alt="direita">
                     </button>
                 </div>
