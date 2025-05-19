@@ -52,13 +52,13 @@ export class HomeComponent {
   updatePagination() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedData = this.data.slice(startIndex, endIndex);
+    this.paginatedData = this.alunos.slice(startIndex, endIndex);
     console.log('Dados da página atual:', this.paginatedData);
 
   }
 
   nextPage() {
-    if (this.currentPage * this.itemsPerPage < this.data.length) {
+    if (this.currentPage * this.itemsPerPage < this.alunos.length) {
       this.currentPage++;
       this.updatePagination();
     }
@@ -73,13 +73,13 @@ export class HomeComponent {
 
   editarRemover() {
     this.dialog.open(EditarRemoverAlunoComponent, {
-        panelClass: 'popup-editar-remover-aluno',
-        enterAnimationDuration: '200ms',
-        exitAnimationDuration: '200ms',
-        width: "0px",
-        position: {
-          right: '20px',
-        }
+      panelClass: 'popup-editar-remover-aluno',
+      enterAnimationDuration: '200ms',
+      exitAnimationDuration: '200ms',
+      width: "0px",
+      position: {
+        right: '20px',
+      }
     })
   }
 

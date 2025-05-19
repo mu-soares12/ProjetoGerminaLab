@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 export interface Aluno {
-  nomecompleto: string;
+  nomeCompleto: string;
   email: string;
   ano: number;
   serie: string;
