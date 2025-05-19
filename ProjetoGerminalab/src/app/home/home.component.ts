@@ -20,34 +20,18 @@ import { AlunoService, Aluno } from '../services/aluno.service';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  data!: Aluno[];
-  paginatedData: Aluno[] = [];
-
-  constructor(private dialog: MatDialog, private alunoService: AlunoService) {}
+  constructor(private dialog: MatDialog, private alunoService: AlunoService) { }
 
   currentPage = 1;
   itemsPerPage = 5;
   itemsPerPageOptions = [5, 10, 15];
-  // paginatedData: any[] = [];
+  paginatedData: Aluno[] = [];
+  data!: Aluno[];
 
   redirecionarCadastroAluno() {
     window.location.href = '/cadastro-aluno';
   }
 
-  ngOnInit() {
-    this.listar();
-  }
-
-  listar() {
-    this.alunoService.listarAlunos().subscribe({
-      next: (res) => {
-        this.data = res;
-      },
-      error: (err) => {
-        console.error('Erro ao listar alunos:', err);
-      }
-    });
-  }
 
   updatePagination() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -56,6 +40,28 @@ export class HomeComponent {
     console.log('Dados da página atual:', this.paginatedData);
 
   }
+
+  listar() {
+    this.alunoService.listarAlunos().subscribe({
+      next: (res) => {
+        this.data = res;
+        this.updatePagination();
+      },
+      error: (err) => {
+        console.error('Erro ao listar alunos:', err);
+      }
+    });
+  }
+
+
+ 
+
+
+  ngOnInit() {
+    this.listar();
+
+  }
+
 
   nextPage() {
     if (this.currentPage * this.itemsPerPage < this.data.length) {
