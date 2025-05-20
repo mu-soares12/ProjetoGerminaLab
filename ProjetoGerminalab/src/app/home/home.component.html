@@ -10,11 +10,11 @@
             <form class="nome-buscar">
                 <div class="search-container">
                     <span><img matPrefix src="icons/search.png" alt="search"></span>
-                    <input matInput placeholder="Buscar por nome">
+                    <input matInput placeholder="Buscar por nome" [(ngModel)]="searchTerm">
                 </div>
 
                 <div class="buttons">
-                    <button type="button" class="btn-pesquisa">
+                    <button type="button" class="btn-pesquisa" (click)="onSearch()">
                         Pesquisar
                     </button>
                     <button type="button" class="btn-register" (click)="redirecionarCadastroAluno()"><img

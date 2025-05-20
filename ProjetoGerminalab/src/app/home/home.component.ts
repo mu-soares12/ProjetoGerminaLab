@@ -27,6 +27,9 @@ export class HomeComponent {
   itemsPerPageOptions = [5, 10, 15];
   paginatedData: Aluno[] = [];
   data!: Aluno[];
+  searchTerm = '';
+  filteredData: Aluno[] = [];
+
 
   redirecionarCadastroAluno() {
     window.location.href = '/cadastro-aluno';
@@ -36,15 +39,19 @@ export class HomeComponent {
   updatePagination() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
-    this.paginatedData = this.data.slice(startIndex, endIndex);
-    console.log('Dados da página atual:', this.paginatedData);
 
+    const origem = this.filteredData.length ? this.filteredData : this.data;
+    this.paginatedData = origem.slice(startIndex, endIndex);
+
+    console.log('Dados da página atual:', this.paginatedData);
   }
+
 
   listar() {
     this.alunoService.listarAlunos().subscribe({
       next: (res) => {
         this.data = res;
+        this.filteredData = [];
         this.updatePagination();
       },
       error: (err) => {
@@ -52,10 +59,6 @@ export class HomeComponent {
       }
     });
   }
-
-
- 
-
 
   ngOnInit() {
     this.listar();
@@ -101,4 +104,16 @@ export class HomeComponent {
       }
     })
   }
+
+  onSearch() {
+    const termo = this.searchTerm.toLowerCase().trim();
+
+    this.filteredData = this.data.filter(p =>
+      p.nomecompleto.toLowerCase().includes(termo)
+    );
+
+    this.currentPage = 1; // volta pra página 1
+    this.updatePagination();
+  }
+
 }
