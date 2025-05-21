@@ -23,9 +23,20 @@ public class AlunoController {
         return alunoService.create(aluno);
     }
 
-    @GetMapping
+    @GetMapping("/tabela")
     public List<Aluno> getAll() {
-        return alunoService.getAll();
+        List<Aluno> alunos = alunoService.getAll();
+        float media;
+
+        for (Aluno aluno : alunos) {
+            media = (aluno.getNotaExatas() + aluno.getNotaLinguagens() + aluno.getNotaCiencias()) / 3;
+            aluno.setMediaGeral(media);
+            if (aluno.getMediaGeral() >= 70){
+                aluno.setStatusFinal("Aprovado");
+            }
+            else {aluno.setStatusFinal("Reprovado");}
+        }
+        return alunos;
     }
 
     @GetMapping("/")
