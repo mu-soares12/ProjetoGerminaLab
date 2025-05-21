@@ -2,6 +2,7 @@ package com.example.projetogerminalabbackend.controller;
 
 import com.example.projetogerminalabbackend.model.Usuario;
 import com.example.projetogerminalabbackend.repository.UsuarioRepository;
+import com.example.projetogerminalabbackend.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,28 +16,20 @@ import java.util.Optional;
 @CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController {
     @Autowired
-    private UsuarioRepository usuarioRepository;
+    private UsuarioService usuarioService;
 
     @PostMapping("/cadastrar")
     public Usuario create(@RequestBody Usuario usuario) {
-        Optional<Usuario> usuario1 = usuarioRepository.findById(usuario.getCduser());
-        if(usuario1.isPresent()){
-            return null;
-        }
-
-        return usuarioRepository.save(usuario);
+        return usuarioService.create(usuario);
     }
 
     @GetMapping
     public List<Usuario> getAll() {
-        return usuarioRepository.findAll();
+        return usuarioService.getAll();
     }
 
     @GetMapping("/login")
     public ResponseEntity<Usuario> findById(@RequestParam String email, @RequestParam String senha) {
-        if(usuarioRepository.findByEmailAndSenha(email, senha).isPresent()){
-            return ResponseEntity.ok(usuarioRepository.findByEmailAndSenha(email, senha).get());
-        }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return usuarioService.findById(email, senha);
     }
 }
