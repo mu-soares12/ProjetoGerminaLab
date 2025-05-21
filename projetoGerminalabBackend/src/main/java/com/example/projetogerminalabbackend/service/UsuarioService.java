@@ -37,4 +37,6 @@ public class UsuarioService {
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
     }
+
+
 }
