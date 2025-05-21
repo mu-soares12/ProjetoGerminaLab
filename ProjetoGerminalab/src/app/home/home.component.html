@@ -9,18 +9,23 @@
             <h1>Gerenciamento de notas</h1>
             <form class="nome-buscar">
                 <div class="search-container">
-                    <span><img matPrefix src="icons/search.png" alt="search"></span>
-                    <input matInput placeholder="Buscar por nome" [(ngModel)]="searchTerm">
+                  <span><img matPrefix src="icons/search.png" alt="search"></span>
+                  <input
+                    matInput
+                    name="searchTerm"
+                    placeholder="Buscar por nome"
+                    [(ngModel)]="searchTerm"
+                  >
                 </div>
-
+              
                 <div class="buttons">
-                    <button type="button" class="btn-pesquisa" (click)="onSearch()">
-                        Pesquisar
-                    </button>
-                    <button type="button" class="btn-register" (click)="redirecionarCadastroAluno()"><img
-                            src="icons/cadastro.png" alt="cadastro">
-                        Cadastrar aluno
-                    </button>
+                  <button type="button" class="btn-pesquisa" (click)="onSearch()">
+                    Pesquisar
+                  </button>
+                  <button type="button" class="btn-register" (click)="redirecionarCadastroAluno()">
+                    <img src="icons/cadastro.png" alt="cadastro">
+                    Cadastrar aluno
+                  </button>
                 </div>
             </form>
             <table id="tabela">

@@ -112,7 +112,7 @@ export class HomeComponent {
       p.nomecompleto.toLowerCase().includes(termo)
     );
 
-    this.currentPage = 1; // volta pra página 1
+    this.currentPage = 1; 
     this.updatePagination();
   }
 
