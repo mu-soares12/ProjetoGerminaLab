@@ -18,7 +18,7 @@ export interface Aluno {
   providedIn: 'root'
 })
 export class AlunoService {
-  private endpointGetAll = 'http://localhost:8080/api/alunos';
+  private endpointGetAll = 'http://localhost:8080/api/alunos/tabela';
 
   constructor(private http: HttpClient) { }
 
